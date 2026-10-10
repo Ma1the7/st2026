@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3eee5">
+  <meta name="description" content="Интерактивный городской атлас Еревана: места, маршрут, карта, вкус города и советы для прогулки.">
+  <title>Ереван, пешком — городской атлас</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+</head>
+<body>
+  <div class="topline"><span>ЕРЕВАН, ПЕШКОМ</span><span>ГОРОДСКОЙ АТЛАС · АРМЕНИЯ</span><span>40°11′ с. ш. · 44°31′ в. д.</span></div>
+  <header class="nav wrap">
+    <a class="brand" href="#top">ЕРЕВАН<span>↗</span></a>
+    <nav aria-label="Основная навигация">
+      <a href="#places">Места</a><a href="#route">Маршрут</a><a href="#map">Карта</a><a href="#context">О городе</a><a href="#tips">Советы</a>
+    </nav>
+    <button class="saved-toggle" id="savedToggle">♡ <span id="savedCount">0</span> сохранено</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">АТЛАС МЕДЛЕННЫХ ПУТЕШЕСТВИЙ <span>№ 001</span></p>
+        <h1>Ереван,<br><em>шаг за шагом.</em></h1>
+        <p class="lead">Розовый камень, дворики и кофе на углу. Узнайте город не по списку, а в своём темпе.</p>
+        <a class="button dark" href="#route">Выбрать маршрут <span>↗</span></a>
+        <div class="hero-note"><span class="dot"></span> ГОРОД, КОТОРОМУ НЕ НУЖНО СПЕШИТЬ</div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Вид на Ереван">
+        <img src="assets/hero.jpg" alt="Панорама Еревана">
+        <div class="hero-art-label"><span>01 / ВИД НА ГОРОД</span><span>ЯСНЫЙ ВЕЧЕР · +24°</span></div>
+        <div class="art-stamp">ԵՐԵՎԱՆ<br><small>ARMENIA</small></div>
+      </div>
+      <div class="hero-bottom"><span>40°11′ С. Ш.</span><span>44°31′ В. Д.</span><span>ВРЕМЯ ИДТИ СВОИМ ТЕМПОМ ↓</span></div>
+    </section>
+
+    <section class="pathbar wrap">
+      <span class="eyebrow">ВАШ ПУТЬ ПО АТЛАСУ</span>
+      <a href="#places"><b>01</b> Найти своё</a><a href="#places"><b>02</b> Увидеть</a><a href="#route"><b>03</b> Пройти</a><a href="#map"><b>04</b> Сориентироваться</a><a href="#ar"><b>05</b> Посмотреть иначе</a>
+    </section>
+
+    <section class="section wrap" id="mood">
+      <div class="section-head"><p class="eyebrow">01 / НАСТРОЙКА ПРОГУЛКИ</p><span class="side-note">МОЖНО ВЫБРАТЬ НЕСКОЛЬКО</span></div>
+      <h2>Что вам ближе<br><em>сегодня?</em></h2>
+      <div class="chips" id="moodChips">
+        <button class="chip active" data-mood="Архитектура">✳ Архитектура</button>
+        <button class="chip active" data-mood="Искусство">✳ Искусство</button>
+        <button class="chip" data-mood="Дворики">↳ Тихие дворики</button>
+        <button class="chip" data-mood="Еда">◒ Местная еда</button>
+        <button class="chip" data-mood="Истории">≋ Истории города</button>
+      </div>
+      <p class="recommendation" id="recommendation">Вам подойдёт прогулка «От рукописей до розового города» — маршрут ниже.</p>
+    </section>
+
+    <section class="section wrap" id="places">
+      <div class="section-head"><p class="eyebrow">02 / МЕСТА С ХАРАКТЕРОМ</p><span class="side-note">ПЯТЬ ТОЧЕК · ТЫСЯЧА ДЕТАЛЕЙ</span></div>
+      <div class="split-title"><h2>Не просто точки.<br><em>Маленькие открытия.</em></h2><p>Не гонитесь за всем сразу. Оставьте время заглянуть во двор и просто посидеть.</p></div>
+      <div class="places-grid">
+        <article class="place-card feature">
+          <div class="place-visual photo"><img src="assets/cascade.jpg" alt="Каскад в Ереване"><span class="visual-index">01</span><span class="visual-caption">ЛЕСТНИЦА · ИСКУССТВО · ГОРОД</span></div>
+          <div class="place-info"><div><span class="tag">Архитектура · центр</span><h3>Каскад</h3><p>Лестница, искусство и город у ваших ног. Начните со скульптурного сада — подъём наверх необязателен.</p></div><button class="save-btn" data-save="Каскад" aria-label="Сохранить Каскад">♡</button></div>
+          <p class="card-foot">Снаружи много ступеней · на подъём нужно больше времени</p>
+        </article>
+        <article class="place-card">
+          <div class="place-visual photo"><img src="assets/republic.jpg" alt="Площадь Республики"><span class="visual-index">02</span><span class="visual-caption">РОЗОВЫЙ ТУФ</span></div>
+          <div class="place-info"><div><span class="tag">Архитектура · центр</span><h3>Площадь Республики</h3><p>Розовый туф и аркады. Приходите к мягкому вечернему свету.</p></div><button class="save-btn" data-save="Площадь Республики" aria-label="Сохранить Площадь Республики">♡</button></div>
+        </article>
+        <article class="place-card">
+          <div class="place-visual photo"><img src="assets/matenadaran.jpg" alt="Матенадаран"><span class="visual-index">03</span><span class="visual-caption">ПАМЯТЬ НА СТРАНИЦАХ</span></div>
+          <div class="place-info"><div><span class="tag">История · проспект Маштоца</span><h3>Матенадаран</h3><p>Хранилище рукописей. На музей заложите отдельное время.</p></div><button class="save-btn" data-save="Матенадаран" aria-label="Сохранить Матенадаран">♡</button></div>
+        </article>
+        <article class="place-card">
+          <div class="place-visual photo"><img src="assets/kond.jpg" alt="Улица старого Конд"><span class="visual-index">04</span><span class="visual-caption">ТИХИЕ УЛИЧКИ</span></div>
+          <div class="place-info"><div><span class="tag">Дворики · старый квартал</span><h3>Конд</h3><p>Узкие проходы и живые дворы. Уважайте частное пространство.</p></div><button class="save-btn" data-save="Конд" aria-label="Сохранить Конд">♡</button></div>
+        </article>
+        <article class="place-card">
+          <div class="place-visual photo"><img src="assets/vernissage.jpg" alt="Вернисаж в Ереване"><span class="visual-index">05</span><span class="visual-caption">ЦВЕТ И РЕМЁСЛА</span></div>
+          <div class="place-info"><div><span class="tag">Ремёсла · улица Арама</span><h3>Вернисаж</h3><p>Керамика, ковры и резьба. Выбор обычно шире в выходные.</p></div><button class="save-btn" data-save="Вернисаж" aria-label="Сохранить Вернисаж">♡</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="route-section" id="route">
+      <div class="wrap route-layout">
+        <div class="route-intro">
+          <p class="eyebrow">03 / ГОТОВЫЙ МАРШРУТ</p><p class="route-kicker">ПЯТЬ ОСТАНОВОК В ВАШЕМ ТЕМПЕ</p>
+          <h2>От рукописей<br><em>до розового</em><br>города.</h2>
+          <p class="lead">Первое знакомство с центром — без спешки и обязательных музейных марафонов.</p>
+          <div class="route-stats"><div><strong>3–4 ч</strong><span>с паузами</span></div><div><strong>≈ 3 км</strong><span>ориентировочно</span></div></div>
+          <button class="button dark" id="saveRoute">Сохранить маршрут ↗</button>
+          <div class="route-tip"><b>МЕНЬШЕ ЛЕСТНИЦ — ТОТ ЖЕ ГОРОД</b><p>Останьтесь у подножия Каскада. На пути встречаются уклоны, ступени и неровные тротуары. Условия лучше уточнить перед прогулкой.</p></div>
+        </div>
+        <div class="route-stops">
+          <div class="stop"><span class="stop-number">01</span><div><h3>Матенадаран</h3><p>Посмотрите на фасад и скульптуры. Вход в музей — отдельная часть дня.</p></div><span class="stop-time">СТАРТ · 20–30 МИН</span></div>
+          <div class="stop"><span class="stop-number">02</span><div><h3>Каскад</h3><p>Спуститесь к скульптурному саду. Подъём по лестнице — по желанию.</p></div><span class="stop-time">10–15 МИН ПЕШКОМ</span></div>
+          <div class="stop"><span class="stop-number">03</span><div><h3>Оперный театр</h3><p>Пройдите по улице Таманяна и сделайте паузу у площади Свободы.</p></div><span class="stop-time">10 МИН ПЕШКОМ</span></div>
+          <div class="stop"><span class="stop-number">04</span><div><h3>Площадь Республики</h3><p>Идите по Северному проспекту. Рассмотрите камень и аркады площади.</p></div><span class="stop-time">15–20 МИН ПЕШКОМ</span></div>
+          <div class="stop"><span class="stop-number">05</span><div><h3>Вернисаж</h3><p>Закончите прогулку среди ремёсел. Прежде чем снимать, спросите мастера.</p></div><span class="stop-time">5–10 МИН ПЕШКОМ</span></div>
+          <p class="fineprint">Время переходов приблизительное. Добавьте запас на жару, светофоры и остановки.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="map">
+      <div class="section-head"><p class="eyebrow">04 / ОРИЕНТИРЫ</p><span class="side-note">СХЕМА НЕ ЗАМЕНЯЕТ НАВИГАТОР</span></div>
+      <div class="split-title"><h2>Город<br><em>на ладони.</em></h2><p>Те же места — текстом. Схема помогает понять район, но не заменяет навигатор.</p></div>
+      <div class="map-layout">
+        <div class="map-illustration">
+          <div class="map-road road-one"></div><div class="map-road road-two"></div><div class="map-road road-three"></div>
+          <span class="map-label label-north">СЕВЕР</span><span class="map-label label-mashtots">проспект Маштоца</span><span class="map-label label-northern">Северный проспект</span><span class="map-label label-arama">ул. Арама</span>
+          <button class="map-pin pin-one active" data-map="Матенадаран"><b>01</b><span>Матенадаран</span></button>
+          <button class="map-pin pin-two" data-map="Каскад"><b>02</b><span>Каскад</span></button>
+          <button class="map-pin pin-three" data-map="Оперный театр"><b>03</b><span>Оперный театр</span></button>
+          <button class="map-pin pin-four" data-map="Площадь Республики"><b>04</b><span>Площадь Республики</span></button>
+          <button class="map-pin pin-five" data-map="Вернисаж"><b>05</b><span>Вернисаж</span></button>
+          <button class="map-pin pin-kond" data-map="Конд"><b>К</b><span>Конд</span></button>
+          <div class="map-compass">N<br>↑</div><span class="map-scale">СХЕМАТИЧНО · НЕ В МАСШТАБЕ</span>
+        </div>
+        <div class="map-list"><p class="eyebrow">ПРОГУЛКА ПО ЦЕНТРУ</p><div id="mapDetails"><h3>01 / Матенадаран</h3><p>проспект Маштоца, 53</p></div>
+          <ol>
+            <li><button data-map="Матенадаран"><span>01</span><b>Матенадаран</b><small>проспект Маштоца, 53</small></button></li>
+            <li><button data-map="Каскад"><span>02</span><b>Каскад</b><small>улица Таманяна</small></button></li>
+            <li><button data-map="Оперный театр"><span>03</span><b>Оперный театр</b><small>улица Туманяна, 54</small></button></li>
+            <li><button data-map="Площадь Республики"><span>04</span><b>Площадь Республики</b><small>центр города</small></button></li>
+            <li><button data-map="Вернисаж"><span>05</span><b>Вернисаж</b><small>улица Арама</small></button></li>
+          </ol><p class="map-warning">Конд отмечен отдельно: там больше уклонов, узких проходов и неровного покрытия.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="context-section" id="context"><div class="wrap">
+      <div class="section-head"><p class="eyebrow">05 / НЕМНОГО КОНТЕКСТА</p><span class="side-note">ЗАМЕЧАЙТЕ ДЕТАЛИ</span></div>
+      <h2>Смотреть — и<br><em>замечать больше.</em></h2>
+      <div class="context-grid">
+        <article><span class="context-num">01 · МАТЕРИАЛ</span><h3>Почему город розовый?</h3><p>Туф — вулканический камень. Его оттенки меняются от пепельного до розового. На закате фасады становятся особенно тёплыми: присмотритесь к фактуре, а не только к цвету.</p></article>
+        <article><span class="context-num">02 · АРХИТЕКТУРА</span><h3>Замысел Таманяна</h3><p>План Александра Таманяна 1924 года задал облик современного центра. Радиальные улицы, площади и местный камень соединили новый город с армянской архитектурной традицией.</p></article>
+        <article><span class="context-num">03 · КУЛЬТУРА</span><h3>Город говорит буквами</h3><p>Армянский алфавит создал Месроп Маштоц в начале V века. В Матенадаране письмо, орнаменты и миниатюры соседствуют на страницах рукописей.</p></article>
+      </div>
+      <div class="little-task">✳ МАЛЕНЬКОЕ ЗАДАНИЕ: НАЙДИТЕ ТРИ ОТТЕНКА ТУФА НА ОДНОЙ УЛИЦЕ.</div>
+    </div></section>
+
+    <section class="food-section wrap" id="food">
+      <div class="food-intro"><p class="eyebrow">06 / ВКУС ГОРОДА</p><h2>Сделайте<br><em>паузу.</em></h2><p>Не список ресторанов, а маленький словарь вкусов.</p><div class="food-illustration"><img src="assets/food.jpg" alt="Армянские блюда"><span>ԵՐԵՎАН · ВКУС ДОМА</span></div></div>
+      <div class="food-list">
+        <p class="eyebrow">ВЫ В ЕРЕВАНЕ</p>
+        <article><span>01</span><div><h3>Лаваш и свежая зелень</h3><p>Тонкий хлеб, сыр и травы — простой способ начать знакомство с местным столом.</p></div></article>
+        <article><span>02</span><div><h3>Долма или хоровац</h3><p>Долма — начинка в листьях или овощах, хоровац — мясо на огне. Уточняйте состав и размер порции.</p></div></article>
+        <article><span>03</span><div><h3>Кофе и гата</h3><p>Кофе по-армянски варят мелкого помола. К нему попробуйте гату — выпечку со сладкой начинкой.</p></div></article>
+        <p class="food-note">Есть аллергии или ограничения? Спросите о составе: в блюдах могут быть орехи, молоко и мясо.</p>
+      </div>
+    </section>
+
+    <section class="ar-section" id="ar"><div class="wrap">
+      <div class="section-head"><p class="eyebrow">07 / ПОСМОТРИ ПО-НОВОМУ</p><span class="side-note">КОНЦЕПЦИЯ AR / 3D</span></div>
+      <div class="split-title"><h2>Знакомое место.<br><em>Новый ракурс.</em></h2><p>Рассмотрите Каскад как маленький город — или представьте историю поверх реального вида.</p></div>
+      <div class="ar-grid ar-showcase">
+        <div class="ar-model three-card" data-model="cascade">
+          <canvas id="cascade3d" aria-label="Интерактивная 3D-модель Каскада"></canvas>
+          <div class="three-ui"><span class="eyebrow">01 / КАСКАД В МИНИАТЮРЕ</span><span class="three-hint">↻ ТЯНИТЕ МЫШЬЮ · ЩИПАЙТЕ ДЛЯ МАСШТАБА</span></div>
+          <div class="model-caption">ВИД СВЕРХУ · ИНТЕРАКТИВНАЯ МОДЕЛЬ</div>
+        </div>
+        <div class="ar-story">
+          <span class="tag">✓ КАСКАД · ОБЪЕКТ НАЙДЕН</span><p class="eyebrow">1970-Е · НАЧАЛО СТРОИТЕЛЬСТВА</p><h3>Город становится<br><em>лестницей.</em></h3><p>Террасы соединяют центр с верхней частью города.</p><a href="#context" class="text-link">Каскад: прочитать историю ↗</a>
+        </div>
+      </div>
+      <div class="three-city-wrap">
+        <div class="three-city-copy"><span class="eyebrow">02 / РОЗОВЫЙ ГОРОД</span><h3>Туф, аркады<br><em>и объём.</em></h3><p>Небольшая процедурная 3D-модель вдохновлена геометрией центра Еревана: башни, аркады и городские кварталы.</p><span class="three-hint">ПОВОРАЧИВАЙТЕ СЦЕНУ МЫШЬЮ</span></div>
+        <div class="three-city three-card"><canvas id="city3d" aria-label="Интерактивная 3D-модель розового города"></canvas><div class="three-ui"><span class="model-chip">3D · CITY BLOCK</span><button id="citySpin" type="button">AUTO ↻</button></div></div>
+      </div>
+      <p class="ar-foot"><b>Та же история — без AR и 3D.</b> Каскад — монументальная лестница с террасами и фонтанами. Здесь находится Центр искусств Гафесчяна, а у подножия — сад скульптур. Культура и повседневная прогулка встречаются в одном месте.</p>
+    </div></section>
+
+    <section class="section wrap" id="tips">
+      <div class="section-head"><p class="eyebrow">08 / ПРАКТИКА</p><span class="side-note">ПРОЧИТАЙТЕ ДО ВЫХОДА</span></div>
+      <div class="split-title"><h2>Меньше хлопот.<br><em>Больше города.</em></h2><p>Короткая памятка, которую полезно прочитать до выхода.</p></div>
+      <div class="tips-grid">
+        <article><span>↗</span><h3>По городу</h3><p>В центре удобно ходить пешком. На длинные расстояния — метро, автобус или такси. Перед поездкой проверьте маршрут и способ оплаты.</p></article>
+        <article><span>☼</span><h3>Солнце и жара</h3><p>Летом планируйте прогулку на утро или ближе к вечеру. Возьмите головной убор и солнцезащиту; днём делайте паузы в тени.</p></article>
+        <article><span>◉</span><h3>Вода рядом</h3><p>Пулпулаки — городские питьевые фонтанчики. Если сомневаетесь в воде или состоянии фонтанчика, выберите бутилированную.</p></article>
+        <article><span>֏</span><h3>Деньги</h3><p>Валюта — армянский драм (AMD). Карты принимают не везде: немного наличных пригодится на рынке и в небольших заведениях.</p></article>
+        <article><span>↟</span><h3>Удобная обувь</h3><p>Выбирайте обувь с нескользящей подошвой. Уклоны, ступени и неровная плитка встречаются даже на коротких прогулках.</p></article>
+        <article><span>✓</span><h3>Перед выходом</h3><p>Уточните часы работы музеев и рынков. Для Конда и подъёма на Каскад заложите запас сил. Маршрут всегда можно сократить.</p></article>
+      </div>
+      <div class="checklist"><b>ПЕРЕД ПРОГУЛКОЙ</b><label><input type="checkbox"> Удобная обувь</label><label><input type="checkbox"> Бутылка воды</label><label><input type="checkbox"> Заряженный телефон</label><label><input type="checkbox"> Немного наличных</label><span id="checkProgress">0 / 4 готово</span></div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-top"><a class="brand" href="#top">ЕРЕВАН<span>↗</span></a><p>Меньше списка.<br>Больше настоящего города.</p><nav><a href="#places">Места</a><a href="#route">Маршрут</a><a href="#map">Карта</a><a href="#tips">Советы</a><a href="#top">Наверх ↑</a></nav></div><div class="wrap footer-bottom"><span>ГОРОДСКОЙ ПУТЕВОДИТЕЛЬ · ЕРЕВАН, АРМЕНИЯ</span><span>Планируйте в своём темпе. Часы работы и условия могут меняться.</span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+  <script type="module" src="three-scenes.js"></script>
+</body>
+</html>
